@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="../../css/自动轮播/轮播.css">
+<script src="../../js/自动轮播/轮播.js"></script>
+<script>
+window.onload  =function (){
+    var oUl = document.getElementById('ul1');
+    var oDiv =document.getElementById('div1');
+    var alis = oUl.getElementsByTagName('li')
+    for(var i=0;i <alis.length;i++){
+        var oImg = document.createElement('img')
+        console.log(i)
+        oImg.src = '../../img/多图片缩放/'+(i+1)+'.jpg'
+        alis[i].appendChild(oImg)
+    }
+        /*
+        *  再把四张图片添加到末尾
+        * */
+    oUl.innerHTML +=oUl.innerHTML;
+    oUl.style.width = 122*8+'px'
+    setInterval(function (){
+        //每两秒移动一个图片的宽
+        startMove(oUl,{
+            left:oUl.offsetLeft-122
+
+        },function (){
+            if(oUl.offsetLeft<=-oUl.offsetWidth/2){
+                oUl.style.left = 0;
+            }
+        })
+    },2000);
+}
+</script>
+<body>
+<div>
+    <div id="div1">
+        <ul id="ul1">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
