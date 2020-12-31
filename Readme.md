@@ -1,3 +1,10 @@
+# myapp
+
+## Project setup
+```
+npm install
+```
+
 ###error:gulp-imagemin: Couldn't load default plugin "gifsicle"
 ```
 请前往淘宝镜像网https://developer.aliyun.com/mirror/NPM?from=tnpm
