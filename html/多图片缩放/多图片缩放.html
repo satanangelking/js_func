@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/多图片缩放/缩放.min.css">
+    <script src="../../js/多图片缩放/缩放.min.js"></script>
+    <script>
+        /*
+        *   3*3 九宫格布局
+        *
+        *  问题：布局通过相对定位 实际放大时候是绝对定位。
+        * */
+        console.log(1)
+        window.onload =function (){
+            var oUl = document.getElementById('ul1');
+            var aLis = oUl.getElementsByTagName('li');
+            var currentIndex =2;
+            for(var i=0;i<aLis.length;i++){
+                aLis[i].style.left = aLis[i].offsetLeft+'px';
+                aLis[i].style.top =aLis[i].offsetTop+'px';
+                var oImg = document.createElement('img');
+                oImg.src = '../../img/多图片缩放/'+(i+1)+'.jpg';
+                aLis[i].appendChild(oImg);
+            }
+            for(var i=0;i<aLis.length;i++){
+                aLis[i].style.position ='absolute';
+                aLis[i].style.margin=0;//因为绝对定位不需要margin来保持距离了
+            }
+
+            for(var i=0;i<aLis.length;i++){//布局的层级问题
+                aLis[i].onmouseover =function (){
+                    this.style.zIndex = currentIndex++;
+                    startMove(this,{
+                        width:200,
+                        height:200,
+                        marginTop:-50,
+                        marginLeft:-50
+                    })
+                };
+                aLis[i].onmouseout = function (){
+                    startMove(this,{
+                        width:100,
+                        height:100,
+                        marginTop:0,
+                        marginLeft:0
+                    })
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
