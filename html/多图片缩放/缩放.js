@@ -1,4 +1,3 @@
-
 function  startMove(node,cssObj,complete){
     clearInterval(node.timer);
     node.timer = setInterval(function (){

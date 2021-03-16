@@ -94,12 +94,10 @@ gulp.task('sass',function (){
         .pipe(connect.reload())
 })
 
-const imagemin = require('gulp-imagemin')
 gulp.task('img',function (){
     return gulp.src(path.img.src)
-        .pipe(imagemin())
         .pipe(gulp.dest(path.img.develop))
-        .pipe(gulp.dest(path.img.develop))
+        .pipe(gulp.dest(path.img.online))
 })
 
 gulp.task('build',gulp.series(['html','css','js','sass','img']),function (){
